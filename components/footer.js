@@ -1,10 +1,11 @@
 import Link from "next/link"
-const styles = {}
+import styles from '../styles/footer.module.css'
+
 export default function Footer() {
   return (
-    <footer>
-      <div className="contenedor">
-            <nav className={styles.navegacion} >
+    <footer className={styles.footer}>
+      <div className={`contenedor ${styles.contenido}`} >
+            <nav className={styles.navegacion}  >
                 <Link href="/" >
                     Inicio 
                 </Link>
@@ -22,7 +23,7 @@ export default function Footer() {
                 </Link>
             </nav>
 
-            <p> Todos los derechos reservados {new Date().getFullYear()}</p>
+            <p className={styles.copyright}> Todos los derechos reservados {new Date().getFullYear()}</p>
       </div>
     </footer>
   )
