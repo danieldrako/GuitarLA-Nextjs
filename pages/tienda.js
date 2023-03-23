@@ -3,7 +3,8 @@ import ListadoGuitarras from "@/components/listado-guitarras"
 
 export default function Tienda({guitarras}) {
 
-  console.log(guitarras)
+ 
+
   return (
     <Layout
         title={'Tienda'}
@@ -13,15 +14,26 @@ export default function Tienda({guitarras}) {
           <h1 className="heading">Nuestra Colección</h1>
 
           <ListadoGuitarras
-
+            guitarras={guitarras}
           />
         </main>
     </Layout>
   )
 }
 
+//estatico
+// export async function getStaticProps(){//!si se modifican los datos, estos no se actualizan al instante, se necesita hacer otro build, la informacion no  va a ser dinamica
+//   const respuesta = await fetch(`${process.env.API_URL}/guitarras?populate=imagen`)
+//   const {data: guitarras} = await respuesta.json()
+//   return {
+//     props: {
+//       guitarras
+//     }
+//   }
+// }
 
-export async function getStaticProps(){//!si se modifican los datos, estos no se actualizan al instante, se necesita hacer otro build, la informacion no  va a ser dinamica
+//dinamico
+export async function getServerSideProps(){//!La informacion es lo más nuevo posible
   const respuesta = await fetch(`${process.env.API_URL}/guitarras?populate=imagen`)
   const {data: guitarras} = await respuesta.json()
   return {
