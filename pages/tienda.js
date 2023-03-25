@@ -4,6 +4,7 @@ import styles from '../styles/grid.module.css'
 
 export default function Tienda({guitarras}) {
 
+
   return (
     <Layout
         title={'Tienda'}

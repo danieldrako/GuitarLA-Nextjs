@@ -1,9 +1,27 @@
+import Layout from "@/components/layout"
+import Image from "next/image"
+import styles from '../../styles/guitarras.module.css'
+
 
 export default function Producto({guitarra}) {
-
-    console.log(guitarra[0].attributes.nombre)
+    
+    
+    const{nombre, descripcion, imagen, precio} = guitarra[0].attributes
+    console.log(imagen.data.attributes.url)
   return (
-    <div>[url]</div>
+    <Layout
+        title={`Guitarra ${nombre}`}
+    >
+        <div className={styles.guitarra}>
+        <Image src={imagen.data.attributes.url} width={600} height={400} alt={`Imagen guitarra ${nombre}`}/>
+        
+        <div className={styles.contenido}>
+            <h3>{nombre}</h3>
+            <p className={styles.descripcion}>{descripcion}</p>
+            <p className={styles.precio}>${precio}</p>
+        </div>
+        </div>
+    </Layout>
   )
 }
 
