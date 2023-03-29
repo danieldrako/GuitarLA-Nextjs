@@ -2,9 +2,7 @@ import Layout from "@/components/layout"
 import Image from "next/image"
 import styles from '../../styles/guitarras.module.css'
 
-
 export default function Producto({guitarra}) {
-    
     
     const{nombre, descripcion, imagen, precio} = guitarra[0].attributes
     console.log(imagen.data.attributes.url)
@@ -19,6 +17,25 @@ export default function Producto({guitarra}) {
             <h3>{nombre}</h3>
             <p className={styles.descripcion}>{descripcion}</p>
             <p className={styles.precio}>${precio}</p>
+
+
+            <form className={styles.formulario}>
+                <label htmlFor="cantidad">Cantidad:</label>
+
+                <select id="cantidad">
+                    <option value="0">--Seleccione--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <input
+                    type="submit"
+                    value="Agregar al carrito"
+                />
+            </form>
         </div>
         </div>
     </Layout>
